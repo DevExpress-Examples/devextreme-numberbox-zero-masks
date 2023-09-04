@@ -12,6 +12,7 @@ This example demonstrates the following features:
 
 You can test how this implementation works in stand-alone editors and inside DataGrid's FilterRow editors.
 
+![chrome_NIb3Uxng7w](https://github.com/DevExpress-Examples/devextreme-numberbox-zero-masks/assets/22076961/daca8be7-fc47-4ac7-a499-8ec11c0ffbaa)
 
 The main idea is to define the [onKeyDown](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#onKeyDown) event handler and switch between zero-based and non-zero formats of the same structure to get the desired result.
 
