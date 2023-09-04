@@ -3,17 +3,18 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T1129779)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# DevExtreme Examples Template
+# NumberBox for DevExtreme - Customize behavior for values that contain zeros 
 
-This is the repository template for creating new examples. 
+This example demonstrates the following features:
 
-Use **_Product_ for DevExtreme - _Task_** template for a title. 
+ - allow entering `0` if [format](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#format) doesn't contain the `0` symbol
+ - hide `0` when using `Backspace` if [format](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#format) contains the `0` symbol
 
-Describe the solved task in this section.
+You can test how this implementation works in stand-alone editors and inside DataGrid's FilterRow editors.
 
-Put a screenshot/gif that illustrates the result here.
 
-Then, add implementation details (steps, code snippets, and other technical information in a free form), or add a link to an existing document with implementation details. 
+The main idea is to define the [onKeyDown](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#onKeyDown) event handler and switch between zero-based and non-zero formats of the same structure to get the desired result.
+
 
 ## Files to Review
 
@@ -31,12 +32,7 @@ Then, add implementation details (steps, code snippets, and other technical info
 
 ## Documentation
 
-- link
-- link
-- ...
+- [NumberBox|format](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#format)
+- [Custom Format String](https://js.devexpress.com/Documentation/Guide/Common/Value_Formatting/#Format_UI_Component_Values/Custom_Format_String)
 
-## More Examples
 
-- link
-- link
-- ...
