@@ -11,7 +11,7 @@ This example demonstrates how to overcome these limitations in the following way
 - Enter `0` if [format](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#format) does not contain the `0` symbol.
 - Hide `0` when using `Backspace` if [format](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#format) contains the `0` symbol.
 
-You can test how this implementation works in stand-alone editors and inside DataGrid's FilterRow editors.
+You can test this implementation in standalone and DataGrid FilterRow editors.
 
 ![NumberBox for DevExtreme - Extend features of mask formats that contain 0](https://github.com/DevExpress-Examples/devextreme-numberbox-zero-masks/assets/22076961/daca8be7-fc47-4ac7-a499-8ec11c0ffbaa)
 
