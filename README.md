@@ -4,14 +4,12 @@
 <!-- default badges end -->
 # NumberBox for DevExtreme - Extend features of mask formats that contain 0 
 
-In NumberBox, you can use [LDML-pattern masks](https://js.devexpress.com/Documentation/Guide/Common/Value_Formatting/#Format_UI_Component_Values/Custom_Format_String) as format. If you specify a combination of two special characters `#` and `0`, NumberBox behavior can be limited.
+In NumberBox, you can use [LDML-pattern masks](https://js.devexpress.com/Documentation/Guide/Common/Value_Formatting/#Format_UI_Component_Values/Custom_Format_String) for formatting values. If you specify a combination of two special characters `#` and `0`, NumberBox behavior can be limited:
 
-This example demonstrates how to overcome these limitations in the following ways:
+- If you specify `0` in the mask, users cannot erase `0` in NumberBox.
+- If you specify only `#` characters in the mask (no `0`), users cannot enter numbers starting with `0` (for example, 0.123). 
 
-- Enter `0` if [format](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#format) does not contain the `0` symbol.
-- Hide `0` when using `Backspace` if [format](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxNumberBox/Configuration/#format) contains the `0` symbol.
-
-You can test this implementation in standalone and DataGrid FilterRow editors.
+This example demonstrates how to overcome these limitations. You can test this implementation in standalone and DataGrid FilterRow editors:
 
 ![NumberBox for DevExtreme - Extend features of mask formats that contain 0](https://github.com/DevExpress-Examples/devextreme-numberbox-zero-masks/assets/22076961/daca8be7-fc47-4ac7-a499-8ec11c0ffbaa)
 
