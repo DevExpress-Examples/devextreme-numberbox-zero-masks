@@ -6,8 +6,8 @@
 
 In NumberBox, you can use [LDML-pattern masks](https://js.devexpress.com/Documentation/Guide/Common/Value_Formatting/#Format_UI_Component_Values/Custom_Format_String) for formatting values. If you specify a combination of two special characters `#` and `0`, NumberBox behavior can be limited:
 
-- If you specify `0` in the mask, users cannot erase `0` in NumberBox.
-- If you specify only `#` characters in the mask (no `0`), users cannot enter numbers starting with `0` (for example, 0.123). 
+- If `0` is in the mask, users cannot erase this character in NumberBox.
+- If one or more `#` characters are in the mask (without `0` characters), users cannot enter numbers starting with `0` (for example, 0.123).
 
 This example demonstrates how to overcome these limitations. You can test this implementation in standalone and DataGrid FilterRow editors:
 
