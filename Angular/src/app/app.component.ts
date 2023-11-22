@@ -28,17 +28,17 @@ export class AppComponent {
 
   currencyFormat = '$ #,##0.##';
 
-  zeroFormatEditorOptions;
+  paymentIdEditorOptions;
 
-  nonZeroFormatEditorOptions;
+  amountEditorOptions;
 
   dataSource: PaymentInfo[];
 
   constructor(service: Service) {
-    this.zeroFormatEditorOptions = {
+    this.paymentIdEditorOptions = {
       format: this.nonZeroFormat,
     };
-    this.nonZeroFormatEditorOptions = {
+    this.amountEditorOptions = {
       format: this.currencyFormat,
     };
     this.dataSource = service.getPayments();
