@@ -1,3 +1,17 @@
 <div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+  <dx-number-box [width]="400" [format]="currencyFormat" valueChangeEvent="keyup" (onKeyDown)="onZeroKeyDown($event)"
+    label="zero-based format">
+  </dx-number-box>
+  <dx-number-box [width]="400" [format]="zeroFormat" valueChangeEvent="keyup" (onContentReady)="onContentReady($event)"
+    (onKeyDown)="onNonZeroKeyDown($event)" label="non-zero format">
+  </dx-number-box>
+  <dx-data-grid [dataSource]="dataSource" keyExpr="PaymentId" [showBorders]="true"
+    (onEditorPreparing)="onEditorPreparing($event)">
+    <dxi-column dataField="PaymentId" caption="Payment Id (non-zero format)" dataType="number" [width]="200"
+      [format]="nonZeroFormat" [editorOptions]="paymentIdEditorOptions"> </dxi-column>
+    <dxi-column dataField="Amount" caption="Amount (zero-based format)" dataType="number" [width]="200"
+      [format]="currencyFormat" [editorOptions]="amountEditorOptions"> </dxi-column>
+    <dxi-column dataField="PaymentDate" dataType="date"> </dxi-column>
+    <dxo-filter-row [visible]="true" applyFilter="auto"></dxo-filter-row>
+  </dx-data-grid>
 </div>
