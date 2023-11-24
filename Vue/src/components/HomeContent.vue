@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import 'devextreme/dist/css/dx.material.blue.light.compact.css';
 
-import DxNumberBox, { DxNumberBoxTypes } from 'devextreme-vue/number-box';
-import dxNumberBox from 'devextreme/ui/number_box';
-import DxDataGrid, { DxColumn, DxFilterRow, DxDataGridTypes } from 'devextreme-vue/data-grid';
+import DxNumberBox from 'devextreme-vue/number-box';
+import DxDataGrid, { DxColumn, DxFilterRow } from 'devextreme-vue/data-grid';
 
 import { payments } from '../data';
+
+import type { DxNumberBoxTypes } from 'devextreme-vue/number-box';
+import type dxNumberBox from 'devextreme/ui/number_box';
+import type { DxDataGridTypes } from 'devextreme-vue/data-grid';
 
 type CustomContentReadyEvent = DxNumberBoxTypes.ContentReadyEvent & {
   component: ExtendedNumberBox;
