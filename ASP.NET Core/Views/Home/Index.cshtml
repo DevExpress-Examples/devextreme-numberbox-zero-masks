@@ -2,28 +2,75 @@
 
 <h2>Home</h2>
 
-@(Html.DevExtreme().DataGrid<SampleOrder>()
+<script type="text/javascript">
+
+    const nonZeroFormat = '##.######';
+    const zeroFormat = '0#.######';
+    const currencyFormat = '$ #,##0.##';
+
+    function onContentReady(e) {
+        if (!e.component.isLoaded) {
+            e.component.isLoaded = true;
+            if (e.component.option('value') === 0) { e.component.option('format', zeroFormat); }
+        }
+    }
+
+    function onNonZeroKeyDown(e) {
+        const value = e.component.option('value');
+        if (e.event?.key === '0' && value === null) {
+            e.component.option('format', zeroFormat);
+        } else if (e.event?.key === 'Backspace' && value === 0) {
+            e.component.option('format', '');
+        } else if (value != null && (value > -1 && value < 1)) {
+            e.component.option('format', zeroFormat);
+        } else {
+            e.component.option('format', nonZeroFormat);
+        }
+    }
+
+    function onZeroKeyDown(e) {
+        if (e.event?.key === 'Backspace' && e.component.option('value') === 0) {
+            e.component.option('format', '');
+        } else {
+            e.component.option('format', currencyFormat);
+        }
+    }
+
+    function onEditorPreparing(e) {
+        if (e.parentType !== 'filterRow') return;
+        if (e.dataField === 'PaymentId') {
+            e.editorOptions.onContentReady = onContentReady;
+            e.editorOptions.onKeyDown = onNonZeroKeyDown;
+        }
+        if (e.dataField === 'Amount') {
+            e.editorOptions.onKeyDown = onZeroKeyDown;
+        }
+    }
+</script>
+@(Html.DevExtreme().NumberBox()
+    .Format("$ #,##0.##")
+    .Width(400)
+    .Label("zero-based format")
+    .ValueChangeEvent("keyup")
+    .OnKeyDown("onZeroKeyDown")
+)
+@(Html.DevExtreme().NumberBox()
+    .Format("##.######")
+    .Width(400)
+    .Label("non-zero format")
+    .ValueChangeEvent("keyup")
+    .OnKeyDown("onNonZeroKeyDown")
+    .OnContentReady("onContentReady")
+)
+@(Html.DevExtreme().DataGrid<PaymentInfo>()
     .ShowBorders(true)
-    .DataSource(d => d.Mvc().Controller("SampleData").LoadAction("Get").Key("OrderID"))
-    .Columns(columns => {
-        columns.AddFor(m => m.OrderID);
-        columns.AddFor(m => m.OrderDate);
-        columns.AddFor(m => m.CustomerName);
-        columns.AddFor(m => m.ShipCountry);
-        columns.AddFor(m => m.ShipCity);
+    .DataSource(d => d.Mvc().Controller("SampleData").LoadAction("Get").Key("PaymentId"))
+    .OnEditorPreparing("onEditorPreparing")
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.PaymentId).Caption("Payment Id (non-zero format)").Width(200).AllowEditing(false).Format("##.######").EditorOptions(new { format = "##.######" });
+        columns.AddFor(m => m.Amount).Caption("Amount (zero-based format)").AllowEditing(false).Format("$ #,##0.##").EditorOptions(new { format = "$ #,##0.##" });
+        columns.AddFor(m => m.PaymentDate);
     })
-    .Paging(p => p.PageSize(10))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .GroupPanel(p => p.Visible(true))
-    .Grouping(g => g.AutoExpandAll(false))
-    .RemoteOperations(true)
-    .Summary(s => s
-        .TotalItems(totalItems => {
-            totalItems.AddFor(m => m.ShipCity).SummaryType(SummaryType.Count);
-        })
-        .GroupItems(groupItems => {
-            groupItems.Add().SummaryType(SummaryType.Count);
-        })
-    )
+    .FilterRow(f => f.Visible(true).ApplyFilter(GridApplyFilterMode.Auto))
 )
