@@ -20,6 +20,15 @@ Define the [onKeyDown](https://js.devexpress.com/Documentation/ApiReference/UI_C
 
 - **jQuery**
     - [index.js](jQuery/src/index.js)
+- **Angular**
+    - [app.component.html](Angular/src/app/app.component.html)
+    - [app.component.ts](Angular/src/app/app.component.ts)
+- **Vue**
+    - [Home.vue](Vue/src/components/HomeContent.vue)
+- **React**
+    - [App.tsx](React/src/App.tsx)
+- **NetCore**    
+    - [Index.cshtml](ASP.NET%20Core/Views/Home/Index.cshtml)    
 
 ## Documentation
 
