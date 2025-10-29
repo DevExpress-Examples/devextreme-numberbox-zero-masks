@@ -46,7 +46,9 @@ export class AppComponent {
     if (!e.component.isLoaded) {
       e.component.isLoaded = true;
       const value: number | undefined = e.component.option('value');
-      if (value && (value > -1 && value < 1)) { e.component.option('format', this.zeroFormat); }
+      if (value !== null && value !== undefined && value > -1 && value < 1) {
+        e.component.option('format', this.zeroFormat);
+      }
     }
   };
 
