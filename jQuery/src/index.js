@@ -15,7 +15,7 @@ $(() => {
       e.component.option('format', currencyFormat);
     }
   }
-  
+
   function keyDownHandlerNonZeroFormat(e) {
     const value = e.component.option('value');
     if (e.event.keyCode === KeyCode.ZERO && value === null) {
@@ -34,7 +34,6 @@ $(() => {
       e.component.option(isLoadedName, true);
       const value = e.component.option('value');
       if (value > -1 && value < 1) { e.component.option('format', zeroFormat); }
-      //if (e.component.option('value') === 0) { e.component.option('format', zeroFormat); }
     }
   }
 
@@ -44,9 +43,8 @@ $(() => {
     label: 'zero-based format',
     value: null,
     valueChangeEvent: 'keyup',
-    onKeyDown: keyDownHandlerZeroFormat
+    onKeyDown: keyDownHandlerZeroFormat,
   });
-
 
   $('#currency2').dxNumberBox({
     format: nonZeroFormat,
@@ -55,7 +53,7 @@ $(() => {
     value: null,
     valueChangeEvent: 'keyup',
     onContentReady: contentReadyNonZeroFormat,
-    onKeyDown: keyDownHandlerNonZeroFormat
+    onKeyDown: keyDownHandlerNonZeroFormat,
   });
 
   $('#gridContainer').dxDataGrid({
