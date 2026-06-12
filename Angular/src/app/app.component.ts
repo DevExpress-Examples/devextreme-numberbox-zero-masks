@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { DxNumberBoxModule, DxNumberBoxTypes } from 'devextreme-angular/ui/number-box';
 import dxNumberBox from 'devextreme/ui/number_box';
@@ -17,6 +17,7 @@ type ExtendedNumberBox = dxNumberBox & {
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [DxDataGridModule, DxNumberBoxModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [Service],
 })
 export class AppComponent {
